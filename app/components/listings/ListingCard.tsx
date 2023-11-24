@@ -89,34 +89,36 @@ const ListingCard: React.FC<ListingCardProps> = ({
             rounded-xl
           "
         >
-          <Carousel
-            showThumbs={false}
-            showStatus={false}
-            showIndicators={false}
-            className="
+          <div>
+            <Carousel
+              showThumbs={false}
+              showStatus={false}
+              showIndicators={false}
+              className="
                 label-listing
                 object-cover 
                 h-full 
                 w-full 
                 transition
               "
-          >
-            {data.imageSrc?.map((item, index) => {
-              return (
-                <img
-                  className="
+            >
+              {data.imageSrc?.map((item, index) => {
+                return (
+                  <img
+                    className="
                 object-cover 
                 h-full 
                 w-full 
                 transition
                 "
-                  key={index}
-                  src={item}
-                  alt="Listing"
-                />
-              );
-            })}
-          </Carousel>
+                    key={index}
+                    src={item}
+                    alt="Listing"
+                  />
+                );
+              })}
+            </Carousel>
+          </div>
           {/* <Image
             fill
             className="
