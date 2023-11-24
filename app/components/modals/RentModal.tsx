@@ -38,6 +38,7 @@ const RentModal = () => {
   const {
     register,
     handleSubmit,
+    getValues,
     setValue,
     watch,
     formState: { errors },
@@ -49,7 +50,7 @@ const RentModal = () => {
       guestCount: 1,
       roomCount: 1,
       bathroomCount: 1,
-      imageSrc: "",
+      imageSrc: [],
       price: 1,
       title: "",
       description: "",
@@ -89,6 +90,8 @@ const RentModal = () => {
     }
 
     setIsLoading(true);
+
+    console.log("data", data);
 
     axios
       .post("/api/listings", data)
@@ -208,7 +211,7 @@ const RentModal = () => {
           subtitle="Show guests what your place looks like!"
         />
         <ImageUpload
-          onChange={(value) => setCustomValue("imageSrc", value)}
+          onChange={(value) => setCustomValue("imageSrc", [...imageSrc, value])}
           value={imageSrc}
         />
       </div>

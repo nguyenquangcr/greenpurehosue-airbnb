@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Image from "next/image";
@@ -11,7 +12,11 @@ import { SafeListing, SafeReservation, SafeUser } from "@/app/types";
 import HeartButton from "../HeartButton";
 import Button from "../Button";
 import ClientOnly from "../ClientOnly";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
+//css
+import "./index.css";
 interface ListingCardProps {
   data: SafeListing;
   reservation?: SafeReservation;
@@ -68,11 +73,10 @@ const ListingCard: React.FC<ListingCardProps> = ({
     return `${format(start, "PP")} - ${format(end, "PP")}`;
   }, [reservation]);
 
-  console.log("check env", process.env.NODE_ENV);
-
+  // group-hover:scale-110
   return (
     <div
-      onClick={() => router.push(`/listings/${data.id}`)}
+      // onClick={() => router.push(`/listings/${data.id}`)}
       className="col-span-1 cursor-pointer group"
     >
       <div className="flex flex-col gap-2 w-full">
@@ -85,7 +89,35 @@ const ListingCard: React.FC<ListingCardProps> = ({
             rounded-xl
           "
         >
-          <Image
+          <Carousel
+            showThumbs={false}
+            showStatus={false}
+            showIndicators={false}
+            className="
+                label-listing
+                object-cover 
+                h-full 
+                w-full 
+                transition
+              "
+          >
+            {data.imageSrc?.map((item, index) => {
+              return (
+                <img
+                  className="
+                object-cover 
+                h-full 
+                w-full 
+                transition
+                "
+                  key={index}
+                  src={item}
+                  alt="Listing"
+                />
+              );
+            })}
+          </Carousel>
+          {/* <Image
             fill
             className="
               object-cover 
@@ -96,7 +128,8 @@ const ListingCard: React.FC<ListingCardProps> = ({
             "
             src={data.imageSrc}
             alt="Listing"
-          />
+          /> */}
+
           <div
             className="
             absolute
