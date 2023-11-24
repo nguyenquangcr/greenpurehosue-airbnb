@@ -35,8 +35,6 @@ const LoginModal = () => {
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
-    console.log("data", data);
-
     signIn("credentials", {
       ...data,
       redirect: false,
@@ -104,7 +102,8 @@ const LoginModal = () => {
       />
       <div
         className="
-      text-neutral-500 text-center mt-4 font-light">
+      text-neutral-500 text-center mt-4 font-light"
+      >
         <p>
           First time using Airbnb?
           <span
@@ -113,7 +112,8 @@ const LoginModal = () => {
               text-neutral-800
               cursor-pointer 
               hover:underline
-            ">
+            "
+          >
             {" "}
             Create an account
           </span>
