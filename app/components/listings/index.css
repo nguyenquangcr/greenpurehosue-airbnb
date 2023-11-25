@@ -1,3 +1,15 @@
-.label-listing .react-multi-carousel-track  {
+.label-listing .slick-slider  {
+  height: 100%;
+}
+
+.slick-list{
+  height: 100%;
+}
+
+.slick-track {
+  height: 100%;
+}
+
+.slick-slide div{
   height: 100%;
 }
